@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world-unhealthy
+spec:
+  containers:
+  - name: hello
+    image: nemo83/hello-unhealthy
+    ports:
+    - containerPort: 8080
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 8080
+      periodSeconds: 5
