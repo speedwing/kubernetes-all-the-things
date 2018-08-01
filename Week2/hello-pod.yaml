@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-world
+  labels:
+    environment: dev
+    hello: world
+spec:
+  containers:
+  - name: hello
+    image: nemo83/hello
+    ports:
+    - containerPort: 8080
