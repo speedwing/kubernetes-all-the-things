@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: dodgy-pod
   labels:
-    pod-template-hash: "2294540316"
+    pod-template-hash: "2294540316"`
     run: hello-world
 spec:
   containers:

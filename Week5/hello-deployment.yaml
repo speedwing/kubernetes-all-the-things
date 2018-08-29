@@ -19,9 +19,3 @@ spec:
         image: nemo83/hello:latest
         ports:
         - containerPort: 8080
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8080
-          periodSeconds: 5
-        minReadySeconds: 10
