@@ -5,7 +5,7 @@ metadata:
   labels:
     app: hello-world-deploy
 spec:
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: hello-world
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: nemo83/hello:latest
+        image: nemo83/hello:v2
         ports:
         - containerPort: 8080
         livenessProbe:
@@ -25,3 +25,8 @@ spec:
             port: 8080
           periodSeconds: 5
   minReadySeconds: 10
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
