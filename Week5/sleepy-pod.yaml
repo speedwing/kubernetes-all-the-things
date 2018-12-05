@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sleepy-pod
+spec:
+  containers:
+  - name: hello
+    image: nemo83/sleepy-aws:latest
+    imagePullPolicy: Always
