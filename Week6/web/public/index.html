@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>Hello, world!</title>
+</head>
+<body>
+
+<div class="container" id="app">
+
+    <ul class="list-group">
+        <li
+            v-for="outcome in apiCallOutcomes"
+            class="list-group-item"
+            v-bind:class="{ 'list-group-item-success': outcome.outcome, 'list-group-item-danger': !outcome.outcome}"
+        > {{ outcome.message }} </li>
+    </ul>
+
+</div>
+
+</body>
+<script>
+var app2 = new Vue({
+  el: '#app',
+  data: {
+   apiCallOutcomes: []
+  },
+  methods: {
+    callApi: function() {
+        let vm = this
+        axios
+            .get('/my-api')
+            .then(response => {
+                let now = new Date().toISOString();
+                let message = 'Called api at ' + now;
+                vm.apiCallOutcomes.unshift({ message: message, outcome: true });
+                vm.apiCallOutcomes = vm.apiCallOutcomes.slice(0, 100);
+            })
+            .catch(function (error) {
+                let now = new Date().toISOString();
+                let message = 'Called api at ' + now;
+                vm.apiCallOutcomes.unshift({ message: message, outcome: false });
+                vm.apiCallOutcomes = vm.apiCallOutcomes.slice(0, 100);
+            })
+    }
+  },
+  mounted: function () {
+    this.callApi();
+    setInterval(function () {
+      this.callApi();
+    }.bind(this), 1000);
+  }
+})
+</script>
+</html>
