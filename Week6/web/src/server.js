@@ -1,6 +1,12 @@
-var express = require('express');
-var axios = require('axios');
-var app = express();
+'use strict';
+
+const express = require('express');
+const axios = require('axios');
+const app = express();
+
+// Constants
+const PORT = 8080;
+const HOST = '0.0.0.0';
 
 app.use(express.static('public'))
 
@@ -22,9 +28,5 @@ app.get('/my-api', function (req, res) {
     }
 })
 
-var server = app.listen(8081, function () {
-   var host = server.address().address
-   var port = server.address().port
-
-   console.log("Example app listening at http://%s:%s", host, port)
-})
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);

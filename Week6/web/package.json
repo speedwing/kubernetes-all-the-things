@@ -1,0 +1,14 @@
+{
+  "name": "my_simple_webapp",
+  "version": "1.0.0",
+  "description": "Node.js on Docker",
+  "author": "First Last <first.last@example.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "axios": "^0.18.0"
+  }
+}
