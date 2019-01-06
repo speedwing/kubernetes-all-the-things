@@ -1,5 +1,12 @@
 'use strict';
 
+if (process.env.APP_VERSION == "v2") {
+    if(!process.env.LOGIN_API_HOST) {
+        console.log("Version 2 requires the env var LOGIN_API_HOST to be set!");
+        process.exit(1);
+    }
+}
+
 const express = require('express');
 const axios = require('axios');
 const app = express();

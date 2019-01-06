@@ -11,8 +11,7 @@ week4:
 
 week6:
 	cd Week6/web; docker build -t nemo83/ws1-web:v1 .; docker push nemo83/ws1-web:v1
-	docker tag nemo83/ws1-web:v1 nemo83/ws1-web:v2
-	docker push nemo83/ws1-web:v2
+	cd Week6/web; docker build -f Dockerfile-v2 -t nemo83/ws1-web:v2 .; docker push nemo83/ws1-web:v2
 	cd Week6/login-v1; docker build -t nemo83/ws1-login:v1 .; docker push nemo83/ws1-login:v1
 	cd Week6/login-v2; docker build -t nemo83/ws1-login:v2 .; docker push nemo83/ws1-login:v2
 

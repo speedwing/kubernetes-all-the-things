@@ -1,0 +1,14 @@
+FROM node:8
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY server.js .
+COPY public public
+
+ENV APP_VERSION v2
+
+CMD [ "npm", "start" ]
