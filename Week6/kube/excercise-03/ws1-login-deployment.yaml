@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ws1-login
+  labels:
+    app: ws1-login
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ws1-login
+  template:
+    metadata:
+      labels:
+        app: ws1-login
+    spec:
+      containers:
+      - name: ws1-login
+        image: nemo83/ws1-login:v2
+        ports:
+        - containerPort: 8080
