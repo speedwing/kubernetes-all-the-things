@@ -18,7 +18,6 @@ function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
-// Usage!
 sleep(10000).then(() => {
     app.listen(PORT, HOST);
     console.log(`Running on http://${HOST}:${PORT}`);
