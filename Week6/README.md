@@ -34,6 +34,11 @@ It's self contained app, it runs in node, and is accessible on port 8080. To run
 It will display a simple table with a log of the last 20 api calls to the login endpoint. A green entry is ok, a red means an error and the 
 badge on the title of the column sums how many error within the last 20 calls.
 
+The exercise:
+
+* deploy the webapp in your local kubernetes on mac 
+* create required resources so that you can browse locally w/o tunnels or port forward
+
 ### Breaking down the monolith (Exercise 2)
 
 A new login service has now been developed and we can use it (and scale it) at wish.
@@ -43,7 +48,12 @@ and just it the root path. It should just return a 200.
 
 In order to use the login service, you also need to release `nemo83/ws1-web:v2`. Version 2 requires the URL of the login service.
 The name of the service can be passed via the env var `LOGIN_API_HOST` and can be added in the Deployment spec. 
-Please note that you do not need to specify the full URL, but just the service name.   
+Please note that you do not need to specify the full URL, but just the service name.
+
+The exercise:
+
+* deploy the webapp and the login service 
+* create required resources so that you can browse locally w/o tunnels or port forward
 
 ### Canary deployment (Exercise 3)
 
@@ -55,3 +65,16 @@ deploy the new version. What is going on? What do you think is happening and how
 check the code.
 
 The docker image is: `nemo83/ws1-login:v2`
+
+The exercise:
+
+* complete the exercise 2
+* create required resources to have both canary and production _deployments_ still pointing to login v1
+  * ensure pods from both deployments are actually used (you can check logs eg. kubectl logs -f pod_name)
+  you will see a `calling login service` every time a login is requested
+* ensure you're browsing the webapp and checking the status of the api calls to login service 
+* now issue a new deployment on the canary deployment and point to login v2
+  * now check your web app.. any errors?
+  * roll back deployment
+* investigate the issue by also checking the code (it's a very simple deployment complication)
+* improve your kube configuration and issue a new deployment ensuring no errors are raised
