@@ -55,7 +55,13 @@ The exercise:
 * deploy the webapp and the login service 
 * create required resources so that you can browse locally w/o tunnels or port forward
 
-### Canary deployment (Exercise 3)
+### Prepare a canary deployment (Exercise 3)
+We know e will be releasing soon a new version and we don't want all the customers to hit the new version so we want to apply 
+canary deployment. 
+
+Create a new canary deployment and attach it behind the service so to have all the infrastructure to make a canary deployment. 
+
+### Canary deployment (Exercise 4)
 
 Let's assume that a new, improved version of our login service is now available
 and we want to roll it out via a canary-like style deployment. How would you do it?
