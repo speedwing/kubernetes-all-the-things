@@ -56,14 +56,21 @@ The exercise:
 * create required resources so that you can browse locally w/o tunnels or port forward
 
 ### Prepare a canary deployment (Exercise 3)
-We know e will be releasing soon a new version and we don't want all the customers to hit the new version so we want to apply 
+We know we will be releasing soon a new version and we don't want all the customers to hit the new version so we want to apply 
 canary deployment. 
 
 Create a new canary deployment and attach it behind the service so to have all the infrastructure to make a canary deployment. 
 
+The exercise:
+
+* complete the exercise 2
+* create required resources to have both canary and production _deployments_ still pointing to login v1
+* ensure pods from both deployments are actually used (you can check logs eg. kubectl logs -f pod_name) you will see 
+a `calling login service` every time a login is requested
+
 ### Canary deployment (Exercise 4)
 
-Let's assume that a new, improved version of our login service is now available
+Let's assume that a new, improved, version of our login service is now available
 and we want to roll it out via a canary-like style deployment. How would you do it?
 
 Technically you should see some errors appearing (unless you've been really diligent in your solutions!) as soon as you
@@ -74,10 +81,7 @@ The docker image is: `nemo83/ws1-login:v2`
 
 The exercise:
 
-* complete the exercise 2
-* create required resources to have both canary and production _deployments_ still pointing to login v1
-  * ensure pods from both deployments are actually used (you can check logs eg. kubectl logs -f pod_name)
-  you will see a `calling login service` every time a login is requested
+* complete the exercise 3
 * ensure you're browsing the webapp and checking the status of the api calls to login service 
 * now issue a new deployment on the canary deployment and point to login v2
   * now check your web app.. any errors?
