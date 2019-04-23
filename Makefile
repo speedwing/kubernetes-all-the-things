@@ -15,4 +15,7 @@ week6:
 	cd Week6/login-v1; docker build -t nemo83/ws1-login:v1 .; docker push nemo83/ws1-login:v1
 	cd Week6/login-v2; docker build -t nemo83/ws1-login:v2 .; docker push nemo83/ws1-login:v2
 
-all: week1 week2 week4 week6
+week7:
+	cd Week7-Mesh/simple-app; docker build -t nemo83/ws2-simple-app:v1 .; docker push nemo83/ws2-simple-app:v1
+
+all: week1 week2 week4 week6 week7

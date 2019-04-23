@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-webapp-routing-config
+  annotations:
+    getambassador.io/config: |
+      ---
+      apiVersion: ambassador/v1
+      kind:  Mapping
+      name:  simple_webapp_mapping
+      prefix: /
+      service: simple-webapp
+      ---
+      apiVersion: ambassador/v1
+      kind:  Mapping
+      name:  simple_webapp_canary_mapping
+      prefix: /
+      service: simple-webapp-canary
+      weight: 10
+      ---
+      apiVersion: ambassador/v1
+      kind:  Mapping
+      name:  simple_webapp_dark_canary_mapping
+      prefix: /
+      regex_headers:
+        cookie: "^.*environment=dark-canary.*$"
+      service: simple-webapp-dark-canary
+spec:
+  ports:
+    - port: 80

@@ -1,0 +1,36 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-webapp-canary
+spec:
+  selector:
+    app: simple-webapp-canary
+  ports:
+    - port: 80
+      name: simple-webapp
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-webapp-canary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-webapp-canary
+  template:
+    metadata:
+      labels:
+        app: simple-webapp-canary
+    spec:
+      containers:
+      - name: simple-webapp
+        image: nemo83/ws2-simple-app:v1
+        env:
+          - name: DEPLOYMENT_GROUP
+            value: canary
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Always
