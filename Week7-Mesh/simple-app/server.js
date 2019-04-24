@@ -15,7 +15,9 @@ if ( deploymentGroup == null ) {
 
 app.get('/', function (req, res) {
    console.log('Called GET on', deploymentGroup);
-   res.send('Deployment Group: ' + deploymentGroup);
+   let host = req.headers['host'];
+   let message = `${host} / ${deploymentGroup}`
+   res.send(message);
 })
 
 console.log('Simple webapp Starting');

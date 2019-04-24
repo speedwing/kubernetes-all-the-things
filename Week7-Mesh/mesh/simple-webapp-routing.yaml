@@ -9,12 +9,16 @@ metadata:
       apiVersion: ambassador/v1
       kind:  Mapping
       name:  simple_webapp_mapping
+      host: "^simple-webapp.*$"
+      host_regex: true
       prefix: /
       service: simple-webapp
       ---
       apiVersion: ambassador/v1
       kind:  Mapping
       name:  simple_webapp_canary_mapping
+      host: "^simple-webapp.*$"
+      host_regex: true
       prefix: /
       service: simple-webapp-canary
       weight: 10
@@ -22,10 +26,30 @@ metadata:
       apiVersion: ambassador/v1
       kind:  Mapping
       name:  simple_webapp_dark_canary_mapping
+      host: "^simple-webapp.*$"
+      host_regex: true
       prefix: /
       regex_headers:
         cookie: "^.*environment=dark-canary.*$"
       service: simple-webapp-dark-canary
+      ---
+      apiVersion: ambassador/v1
+      kind:  Mapping
+      name:  simple_webapp_dark_canary_mapping_shadow
+      host: "^simple-webapp.*$"
+      host_regex: true
+      prefix: /
+      service: simple-webapp-dark-canary
+      shadow: true
+      weight: 10
+      ---
+      apiVersion: ambassador/v1
+      kind:  Mapping
+      name:  other_webapp_mapping
+      host: "^other-webapp.*$"
+      host_regex: true
+      prefix: /
+      service: other-webapp
 spec:
   ports:
     - port: 80
