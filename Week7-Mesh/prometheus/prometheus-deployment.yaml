@@ -1,0 +1,32 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+spec:
+  replicas: 1
+  retention: 1w
+  serviceMonitorNamespaceSelector:
+    matchLabels:
+      prometheus/global: "true"
+  serviceMonitorSelector:
+    matchLabels:
+      prometheus/global: "true"
+  ruleNamespaceSelector:
+    matchLabels:
+      prometheus/global: "true"
+  ruleSelector:
+    matchLabels:
+      prometheus/global: "true"
+  resources:
+    requests:
+      memory: 1Gi
+      cpu: 200m
+    limits:
+      memory: 1Gi
+      cpu: 200m
+  securityContext:
+    fsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+#  externalUrl: "{{ .Values.externalUrl }}"
