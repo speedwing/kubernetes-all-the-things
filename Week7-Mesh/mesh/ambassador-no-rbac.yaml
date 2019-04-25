@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: ambassador
-        image: nemo83/ambassador:nemo83-feature-add-weight-to-shadow-traffic-4e765b89
+        image: quay.io/datawire/ambassador:0.60.1
         resources:
           limits:
             cpu: 1
@@ -41,6 +41,8 @@ spec:
         env:
         - name: STATSD_ENABLED
           value: "true"
+        - name: STATSD_HOST
+          value: "statsd-sink"
         - name: AMBASSADOR_NAMESPACE
           valueFrom:
             fieldRef:
