@@ -49,7 +49,6 @@ spec:
   selector:
     service: statsd-sink
   type: ClusterIP
-  clusterIP: None
   ports:
     - name: prometheus-metrics
       port: 9102
@@ -62,6 +61,7 @@ metadata:
   name: ambassador-monitor
   labels:
     ambassador: monitoring
+    prometheus/global: "true"
 spec:
   selector:
     matchLabels:
