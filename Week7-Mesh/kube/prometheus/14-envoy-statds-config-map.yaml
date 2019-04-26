@@ -1,14 +1,17 @@
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: ambassador-config
-data:
-  exporterConfiguration: |
-    ---
-    mappings:
-    - match: 'envoy.cluster.*.upstream_rq_total'
-      name: "envoy_cluster_upstream_rq_total"
-      timer_type: 'histogram'
-      labels:
-        cluster_name: "$1"
+#####
+# Commented out as it seems to be working w/o
+#####
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: ambassador-config
+#data:
+#  exporterConfiguration: |
+#    ---
+#    mappings:
+#    - match: 'envoy.cluster.*.upstream_rq_total'
+#      name: "envoy_cluster_upstream_rq_total"
+#      timer_type: 'histogram'
+#      labels:
+#        cluster_name: "$1"
