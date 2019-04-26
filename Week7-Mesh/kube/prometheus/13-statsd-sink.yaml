@@ -25,6 +25,7 @@ spec:
   ports:
     - protocol: UDP
       port: 8125
+      targetPort: 9125
       name: statsd-metrics
     - protocol: TCP
       port: 9102
