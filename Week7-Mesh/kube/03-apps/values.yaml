@@ -1,0 +1,17 @@
+image: grafana/grafana:5.2.0
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        url: http://prometheus:80
+        access: proxy
+        isDefault: true
+
+
+# Fully Qualified Domain Name for Grafana
+fqdn:
+
+env:

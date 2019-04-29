@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-ini
+data:
+  custom.ini: |-
+    [server]
+    root_url = http://grafana.local
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: dashboard-grafana
+#data:
+#  dashboards.yaml: |-
+#    apiVersion: 1
+#    providers:
+#    - name: 'default'
+#      orgId: 1
+#      folder: ''
+#      type: file
+#      disableDeletion: false
+#      updateIntervalSeconds: 3 #how often Grafana will scan for changed dashboards
+#      options:
+#        path: /etc/grafana/dashboards
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: grafana-datasource
+#data:
+#  {{- if .Values.datasources }}
+#  {{- range $key, $value := .Values.datasources }}
+#  {{ $key }}: |
+#  {{ toYaml $value | indent 4 }}
+#  {{- end -}}
+#  {{- end -}}

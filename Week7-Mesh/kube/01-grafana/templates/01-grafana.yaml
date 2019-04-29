@@ -1,0 +1,88 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: grafana
+  labels:
+    app: grafana
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: {{ .Values.image }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+- name: GF_PATHS_CONFIG
+  value: /etc/grafana/custom.ini
+volumeMounts:
+  - name: dashboards
+    mountPath: /etc/grafana/dashboards/
+  - name: grafana-ini
+    mountPath: /etc/grafana
+    readOnly: true
+  - name: dashboard-grafana
+    mountPath: /etc/grafana/provisioning/dashboards
+    readOnly: true
+  - name: grafana-datasource
+    mountPath: /etc/grafana/provisioning/datasources
+    readOnly: true
+livenessProbe:
+  httpGet:
+    path: /api/health
+    port: 3000
+  initialDelaySeconds: 60
+  timeoutSeconds: 30
+  failureThreshold: 10
+  periodSeconds: 10
+readinessProbe:
+  httpGet:
+    path: /api/health
+    port: 3000
+  initialDelaySeconds: 60
+  timeoutSeconds: 30
+  failureThreshold: 10
+  periodSeconds: 10
+resources:
+  requests:
+    cpu: 100m
+    memory: 100Mi
+  limits:
+    cpu: 100m
+    memory: 100Mi
+- name: sidecar
+  image: kiwigrid/k8s-sidecar:0.0.5
+  volumeMounts:
+    - name: dashboards
+      mountPath: /etc/grafana/dashboards/
+  env:
+    - name: LABEL
+      value: "grafana-dashboard/global"
+    - name: FOLDER
+      value: /etc/grafana/dashboards/
+  resources:
+    requests:
+      cpu: 50m
+      memory: 50Mi
+    limits:
+      cpu: 50m
+      memory: 50Mi
+securityContext:
+  fsGroup: 472
+volumes:
+  - name: dashboards
+    emptyDir: {}
+  - name: grafana-ini
+    configMap:
+      name: grafana-ini
+  - name: dashboard-grafana
+    configMap:
+      name: dashboard-grafana
+  - name: grafana-datasource
+    configMap:
+      name: grafana-datasource
