@@ -27,9 +27,9 @@ There are multiple exercises, every following one introduces some complexity and
 
 The first exercise consist in deploying on your local kubernetes (on docker) the version 1 of the app.
 
-The docker image of the app is: `nemo83/ws1-web:v1`
+The docker image of the app is: `speedwing/ws1-web:v1`
 
-It's self contained app, it runs in node, and is accessible on port 8080. To run this locally you can issue: `docker run -p 8080:8080 nemo83/ws1-web:v1`
+It's self contained app, it runs in node, and is accessible on port 8080. To run this locally you can issue: `docker run -p 8080:8080 speedwing/ws1-web:v1`
 
 It will display a simple table with a log of the last 20 api calls to the login endpoint. A green entry is ok, a red means an error and the 
 badge on the title of the column sums how many error within the last 20 calls.
@@ -43,10 +43,10 @@ The exercise:
 
 A new login service has now been developed and we can use it (and scale it) at wish.
 
-The docker image is `nemo83/ws1-login:v1` and you can run it locally with `docker run -p 8080:8080 nemo83/ws1-login:v1` 
+The docker image is `speedwing/ws1-login:v1` and you can run it locally with `docker run -p 8080:8080 speedwing/ws1-login:v1` 
 and just it the root path. It should just return a 200.
 
-In order to use the login service, you also need to release `nemo83/ws1-web:v2`. Version 2 requires the URL of the login service.
+In order to use the login service, you also need to release `speedwing/ws1-web:v2`. Version 2 requires the URL of the login service.
 The name of the service can be passed via the env var `LOGIN_API_HOST` and can be added in the Deployment spec. 
 Please note that you do not need to specify the full URL, but just the service name.
 
@@ -77,7 +77,7 @@ Technically you should see some errors appearing (unless you've been really dili
 deploy the new version. What is going on? What do you think is happening and how could you fix it? You can of course 
 check the code.
 
-The docker image is: `nemo83/ws1-login:v2`
+The docker image is: `speedwing/ws1-login:v2`
 
 The exercise:
 

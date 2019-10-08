@@ -10,6 +10,6 @@ metadata:
 spec:
   containers:
   - name: hello
-    image: nemo83/hello
+    image: speedwing/hello
     ports:
     - containerPort: 8080
