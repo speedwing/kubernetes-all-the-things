@@ -1,21 +1,29 @@
-.PHONY: all week1 week2 week4 week6
+.PHONY: all week1 week2 week4 week6 npm-update
 
 week1:
-	cd Week1/hello; docker build -t nemo83/hello:latest .; docker push nemo83/hello:latest
+	cd Week1/hello; docker build -t speedwing/hello:latest .; docker push speedwing/hello:latest
 
 week2:
-	cd Week2/hello-unhealthy; docker build -t nemo83/hello-unhealthy:latest .; docker push nemo83/hello-unhealthy:latest
+	cd Week2/hello-unhealthy; docker build -t speedwing/hello-unhealthy:latest .; docker push speedwing/hello-unhealthy:latest
 
 week4:
-	cd Week4/hello; docker build -t nemo83/hello:v2 .; docker push nemo83/hello:v2
+	cd Week4/hello; docker build -t speedwing/hello:v2 .; docker push speedwing/hello:v2
 
 week6:
-	cd Week6/web; docker build -t nemo83/ws1-web:v1 .; docker push nemo83/ws1-web:v1
-	cd Week6/web; docker build -f Dockerfile-v2 -t nemo83/ws1-web:v2 .; docker push nemo83/ws1-web:v2
-	cd Week6/login-v1; docker build -t nemo83/ws1-login:v1 .; docker push nemo83/ws1-login:v1
-	cd Week6/login-v2; docker build -t nemo83/ws1-login:v2 .; docker push nemo83/ws1-login:v2
+	cd Week6/web; docker build -t speedwing/ws1-web:v1 .; docker push speedwing/ws1-web:v1
+	cd Week6/web; docker build -f Dockerfile-v2 -t speedwing/ws1-web:v2 .; docker push speedwing/ws1-web:v2
+	cd Week6/login-v1; docker build -t speedwing/ws1-login:v1 .; docker push speedwing/ws1-login:v1
+	cd Week6/login-v2; docker build -t speedwing/ws1-login:v2 .; docker push speedwing/ws1-login:v2
 
 week7:
-	cd Week7-Mesh/simple-app; docker build -t nemo83/ws2-simple-app:v1 .; docker push nemo83/ws2-simple-app:v1
+	cd Week7-Mesh/simple-app; docker build -t speedwing/ws2-simple-app:v1 .; docker push speedwing/ws2-simple-app:v1
+
+npm-update:
+	cd Week1/hello; npm update
+	cd Week2/hello-unhealthy; npm update
+	cd Week4/hello; npm update
+	cd Week6/web; npm update
+	cd Week6/login-v1; npm update
+	cd Week6/login-v2; npm update
 
 all: week1 week2 week4 week6 week7
