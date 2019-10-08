@@ -5,5 +5,5 @@ metadata:
 spec:
   containers:
   - name: hello
-    image: nemo83/sleepy-aws:latest
+    image: speedwing/sleepy-aws:latest
     imagePullPolicy: Always

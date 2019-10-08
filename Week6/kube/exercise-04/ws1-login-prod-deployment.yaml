@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: ws1-login
-        image: nemo83/ws1-login:v1
+        image: speedwing/ws1-login:v1
         ports:
         - containerPort: 8080

@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: nemo83/hello:latest
+        image: speedwing/hello:latest
         ports:
         - containerPort: 8080
         livenessProbe:

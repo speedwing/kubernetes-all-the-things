@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: simple-webapp
-        image: nemo83/ws2-simple-app:v1
+        image: speedwing/ws2-simple-app:v1
         env:
           - name: DEPLOYMENT_GROUP
             value: dark-canary
