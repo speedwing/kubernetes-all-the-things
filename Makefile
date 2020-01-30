@@ -1,7 +1,8 @@
 .PHONY: all week1 week2 week4 week6 npm-update
 
 week1:
-	cd Week1/hello; docker build -t speedwing/hello:latest .; docker push speedwing/hello:latest
+	cd Week1/hello; docker build -t speedwing/hello:v1 .; docker push speedwing/hello:v1
+	docker tag speedwing/hello:v1 speedwing/hello:latest; docker push speedwing/hello:latest
 
 week2:
 	cd Week2/hello-unhealthy; docker build -t speedwing/hello-unhealthy:latest .; docker push speedwing/hello-unhealthy:latest

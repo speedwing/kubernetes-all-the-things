@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: speedwing/hello:latest
+        image: speedwing/hello:v1
         ports:
         - containerPort: 8080
         livenessProbe:
