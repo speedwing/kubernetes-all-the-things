@@ -6,7 +6,7 @@ metadata:
   labels:
     app: hello-world
     stage: live
-    team: team@email.com
+    team: "team_AT_email.com"
 spec:
   containers:
     - name: hello
@@ -21,13 +21,13 @@ metadata:
   labels:
     app: hello-world
     stage: dark
-    team: team@email.com
+    team: "team_AT_email.com"
 spec:
   containers:
-  - name: hello
-    image: speedwing/hello:v2
-    ports:
-    - containerPort: 8080
+    - name: hello
+      image: speedwing/hello:v2
+      ports:
+        - containerPort: 8080
 ---
 apiVersion: v1
 kind: Pod
@@ -36,7 +36,7 @@ metadata:
   labels:
     app: hello-world
     stage: canary
-    team: team@email.com
+    team: "team_AT_email.com"
 spec:
   containers:
     - name: hello
