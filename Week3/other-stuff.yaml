@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: other-stuff-deploy
+  labels:
+    app: other-stuff-deploy
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: other-stuff
+  template:
+    metadata:
+      labels:
+        app: other-stuff
+        stage: live
+    spec:
+      containers:
+      - name: other-stuff
+        image: speedwing/sleepy:latest
+        ports:
+        - containerPort: 8080
