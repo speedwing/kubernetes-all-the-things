@@ -2,13 +2,14 @@
 
 week1:
 	cd Week1/hello; docker build -t speedwing/hello:v1 .; docker push speedwing/hello:v1
-	docker tag speedwing/hello:v1 speedwing/hello:latest; docker push speedwing/hello:latest
+
 
 week2:
-	cd Week2/hello-unhealthy; docker build -t speedwing/hello-unhealthy:latest .; docker push speedwing/hello-unhealthy:latest
+	cd Week2/hello-unhealthy; docker build -t speedwing/hello:v1-unhealthy .; docker push speedwing/hello:v1-unhealthy
 
 week4:
 	cd Week4/hello; docker build -t speedwing/hello:v2 .; docker push speedwing/hello:v2
+	docker tag speedwing/hello:v2 speedwing/hello:latest; docker push speedwing/hello:latest
 
 week6:
 	cd Week6/web; docker build -t speedwing/ws1-web:v1 .; docker push speedwing/ws1-web:v1
