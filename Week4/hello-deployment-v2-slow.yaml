@@ -19,3 +19,4 @@ spec:
           image: speedwing/hello:v2
           ports:
             - containerPort: 8080
+  minReadySeconds: 15

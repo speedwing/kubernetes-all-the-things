@@ -5,7 +5,7 @@ metadata:
   labels:
     app: hello-world
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: hello-world
@@ -19,3 +19,9 @@ spec:
           image: speedwing/hello:v2
           ports:
             - containerPort: 8080
+  minReadySeconds: 30
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 3
+    type: RollingUpdate
