@@ -1,22 +1,28 @@
-const http = require('http');
-const os = require('os');
+'use strict';
 
-console.log("Hello server starting...");
+const express = require('express');
+const app = express();
+
+// Constants
+const PORT = 8080;
+const HOST = '0.0.0.0';
 
 var requestCount = 0;
 
-var handler = function(request, response) {
-  console.log("Received request from " + request.connection.remoteAddress);
-  requestCount++;
-  if (requestCount > 5) {
-    response.writeHead(500);
-    response.end("I'm not well. Please restart me!");
-    return;
-  }
-  response.writeHead(200);
-  response.end("You've hit " + os.hostname() + "\n");
-};
+app.get('/', function (req, res) {
+   console.log('login ok!')
+   res.send("You've hit " + os.hostname());
+})
 
-var www = http.createServer(handler);
-www.listen(8080);
+app.get('/healthcheck', function (req, res) {
+   if ( requestCount > 5 ) {
+    res.status(500);
+    res.send("Internal Server Error :'-(");
+   } else {
+      res.send('ok');
+   }
+})
 
+console.log('Server starting');
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
